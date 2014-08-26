@@ -95,6 +95,45 @@ public class GestionarCliente {
             Logger.getLogger(GestionarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
    }
+   public void insertarCliente(Cliente c){
+        try {
+            Statement comando=connection.createStatement();
+            int especial = 0;
+            if(c.isEspecial()){
+                especial = 1;
+            }
+            System.out.println(especial);
+             /*System.out.println("INSERT INTO Cliente" +
+                    "(idCliente," +
+                    "'Nombre," +
+                    "'Apellidos'," +
+                    "'Apodo'," +
+                    "'Especial')" +
+                    "VALUES" +
+                    "(null,'" +
+                    c.getNombre()+"','" +
+                    c.getApellidos()+"','" +
+                    c.getApodo()+"','" +
+                    especial+"')");*/
+            comando.executeUpdate(
+                    "INSERT INTO Cliente" +
+                    "(idCliente," +
+                    "Nombre," +
+                    "Apellidos," +
+                    "Apodo," +
+                    "Especial)" +
+                    "VALUES" +
+                    "(NULL,'" +
+                    c.getNombre()+"','" +
+                    c.getApellidos()+"','" +
+                    c.getApodo()+"','" +
+                    especial+"')");
+           
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
    
    
 
