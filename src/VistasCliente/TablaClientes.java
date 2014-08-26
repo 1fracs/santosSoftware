@@ -8,6 +8,8 @@ package VistasCliente;
 
 import Cliente.Cliente;
 import Cliente.GestionarCliente;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -91,12 +93,24 @@ public class TablaClientes extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        buscar = new javax.swing.JFrame();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaBuscar = new javax.swing.JTable();
+        espere = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        textBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        RNombre = new javax.swing.JRadioButton();
+        RApellidos = new javax.swing.JRadioButton();
+        RApodo = new javax.swing.JRadioButton();
+        RNumero = new javax.swing.JRadioButton();
+        jSeparator4 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -341,20 +355,14 @@ public class TablaClientes extends javax.swing.JFrame {
                 .addGap(81, 81, 81))
         );
 
-        nombreN.setText("jTextField1");
-
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel14.setText("Nombre");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel15.setText("Apellidos");
 
-        apellidosN.setText("jTextField2");
-
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel16.setText("Apodo");
-
-        apodoN.setText("jTextField3");
 
         especialN.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         especialN.setText("Especial");
@@ -422,6 +430,59 @@ public class TablaClientes extends javax.swing.JFrame {
                 .addGap(47, 47, 47))
         );
 
+        tablaBuscar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", "Id", "Nombre", "Apellidos", "Apodo", "Especial"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tablaBuscar);
+
+        javax.swing.GroupLayout buscarLayout = new javax.swing.GroupLayout(buscar.getContentPane());
+        buscar.getContentPane().setLayout(buscarLayout);
+        buscarLayout.setHorizontalGroup(
+            buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        buscarLayout.setVerticalGroup(
+            buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarLayout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jLabel1.setText("espere...");
+
+        javax.swing.GroupLayout espereLayout = new javax.swing.GroupLayout(espere.getContentPane());
+        espere.getContentPane().setLayout(espereLayout);
+        espereLayout.setHorizontalGroup(
+            espereLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(espereLayout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addComponent(jLabel1)
+                .addContainerGap(197, Short.MAX_VALUE))
+        );
+        espereLayout.setVerticalGroup(
+            espereLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(espereLayout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addComponent(jLabel1)
+                .addContainerGap(168, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -455,9 +516,6 @@ public class TablaClientes extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Listado de clientes");
-
         jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -479,6 +537,24 @@ public class TablaClientes extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel18.setText("Buscar");
+
+        RNombre.setText("Nombre");
+
+        RApellidos.setText("Apellidos");
+
+        RApodo.setText("Apodo");
+
+        RNumero.setText("Numero");
+
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
@@ -493,43 +569,111 @@ public class TablaClientes extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 542, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(34, 34, 34))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel18)
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(RNombre)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(RApellidos)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(RApodo)
+                                    .addGap(24, 24, 24)
+                                    .addComponent(RNumero))
+                                .addComponent(textBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel18)
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                        .addGap(6, 6, 6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addGap(67, 67, 67)
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RNombre)
+                            .addComponent(RApellidos)
+                            .addComponent(RApodo)
+                            .addComponent(RNumero))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    
+    private boolean opcionBusqueda=true;
+    private String buscarPor(){
+        String buscar="";
+        
+        if(RNombre.isSelected()){
+            buscar="nombre";
+        }else{
+            if(RApellidos.isSelected()){
+                buscar="apellidos";
+            }else{
+                if(RApodo.isSelected()){
+                    buscar="apodo";
+                }else{
+                    if(RNumero.isSelected()){
+                        buscar="idCliente";
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Debes seleccionar una opcion de busqueda.");
+                        opcionBusqueda=false;
+                    }
+                }
+            }
+        }
+        return buscar;
+    }
+    private void buscar(){
+        GestionarCliente gc = new GestionarCliente();
+        ArrayList<Cliente> cBuscado = gc.buscarCliente(this.buscarPor(), textBuscar.getText());
+        System.out.println(opcionBusqueda);
+        if(opcionBusqueda){
+            buscar.setVisible(true);
+            buscar.setTitle("Resultado");
+            buscar.setSize(500, 300);
+        }
+        DefaultTableModel modelo = (DefaultTableModel)tablaBuscar.getModel();
+        this.limpiarTablaBuscar();
+        try{
+        for(int i =0;i<cBuscado.size();i++){
+            modelo.addRow(new Object[]{i+1,cBuscado.get(i).getIdCliente(),cBuscado.get(i).getNombre(),cBuscado.get(i).getApellidos(),cBuscado.get(i).getApodo(),cBuscado.get(i).isEspecial()});
+        }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        gc.desconectar();
+        opcionBusqueda=true;
+    }
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
         if (evt.isMetaDown()){
             JOptionPane.showMessageDialog(null, "Pulsado");
@@ -553,7 +697,7 @@ public class TablaClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
     private void setFrameModificar(){
         modificarFrame.setVisible(true);
-        modificarFrame.setTitle("Ver | Modificar Cliente");
+        modificarFrame.setTitle("Modificar Cliente");
         modificarFrame.setSize(500, 300);
     }
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
@@ -574,14 +718,29 @@ public class TablaClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
         }
     }
+    public void limpiarTablaBuscar(){
+        try {
+            DefaultTableModel modelo=(DefaultTableModel) tablaBuscar.getModel();
+            int filas=tablaBuscar.getRowCount();
+            for (int i = 0;filas>i; i++) {
+                modelo.removeRow(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+        }
+    }
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
        Cliente clienteNuevo = new Cliente( Integer.parseInt(idLabel.getText()),nombre.getText(), apellidos.getText(), apodo.getText(), especial.isSelected());
        GestionarCliente modificar = new GestionarCliente();
-       JOptionPane.showMessageDialog(null, "espere...");
+       //JOptionPane.showMessageDialog(null, "espere...");
+       this.espere.setVisible(true);
+       this.espere.setSize(400, 400);
+       espere.setLocationRelativeTo(null);
        modificar.modificarCliente(clienteNuevo);
        this.limpiarTabla();
        this.mostrarClientes();
        modificarFrame.setVisible(false);
+       espere.setVisible(false);
        
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -592,7 +751,7 @@ public class TablaClientes extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         nuevo.setVisible(true);
         nuevo.setTitle("Añadir cliente nuevo");
-        nuevo.setSize(500, 300);
+        nuevo.setSize(500, 400);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void nombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre1ActionPerformed
@@ -626,6 +785,10 @@ public class TablaClientes extends javax.swing.JFrame {
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
        this.anadirCliente();
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        this.buscar();
+    }//GEN-LAST:event_btnBuscarActionPerformed
     
     private void anadirCliente(){
         boolean especialNew = false;
@@ -689,7 +852,10 @@ public class TablaClientes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                new TablaClientes().setLocationRelativeTo(null);
                 new TablaClientes().setVisible(true);
+                		
+       
             }
         });
         
@@ -701,18 +867,25 @@ public class TablaClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton RApellidos;
+    private javax.swing.JRadioButton RApodo;
+    private javax.swing.JRadioButton RNombre;
+    private javax.swing.JRadioButton RNumero;
     private javax.swing.JTextField apellidos;
     private javax.swing.JTextField apellidos1;
     private javax.swing.JTextField apellidosN;
     private javax.swing.JTextField apodo;
     private javax.swing.JTextField apodo1;
     private javax.swing.JTextField apodoN;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnModificar1;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JFrame buscar;
     private javax.swing.JCheckBox especial;
     private javax.swing.JCheckBox especial1;
     private javax.swing.JCheckBox especialN;
+    private javax.swing.JDialog espere;
     private javax.swing.JLabel idLabel;
     private javax.swing.JLabel idLabel1;
     private javax.swing.JButton jButton1;
@@ -731,6 +904,7 @@ public class TablaClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -743,16 +917,20 @@ public class TablaClientes extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JFrame modificarFrame;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField nombre1;
     private javax.swing.JTextField nombreN;
     private javax.swing.JFrame nuevo;
     private javax.swing.JTable tabla;
+    private javax.swing.JTable tablaBuscar;
+    private javax.swing.JTextField textBuscar;
     private javax.swing.JFrame ver;
     // End of variables declaration//GEN-END:variables
 }

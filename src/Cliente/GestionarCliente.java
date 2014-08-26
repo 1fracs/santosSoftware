@@ -64,7 +64,7 @@ public class GestionarCliente {
             ResultSet registro = comando.executeQuery("select * from Cliente");
             boolean especial = false;
             while (registro.next()){
-                if(registro.getInt(5)==1){
+                if(registro.getString(5).equalsIgnoreCase("1")){
                     especial=true;
                 }
                 Cliente c = new Cliente(registro.getInt(1), registro.getString(2), registro.getString(3), registro.getString(4), especial);
@@ -94,6 +94,28 @@ public class GestionarCliente {
         } catch (SQLException ex) {
             Logger.getLogger(GestionarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+   }
+   
+   public ArrayList<Cliente> buscarCliente(String tipo, String condicion){
+       Cliente clienteBuscado=null;
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        try {
+            Statement comando=connection.createStatement();
+            System.out.println("select * from Cliente where "+tipo+" like %'"+condicion+"'%");
+            ResultSet registro = comando.executeQuery("select * from Cliente where "+tipo+" like '%"+condicion+"%'");
+            
+            boolean especial = false;
+            while (registro.next()){
+                if(registro.getString(5).equalsIgnoreCase("1")){
+                    especial=true;
+                }
+                clienteBuscado = new Cliente(registro.getInt(1), registro.getString(2), registro.getString(3), registro.getString(4), especial);
+                clientes.add(clienteBuscado);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return clientes;
    }
    public void insertarCliente(Cliente c){
         try {
