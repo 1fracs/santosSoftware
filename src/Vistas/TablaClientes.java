@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package VistasCliente;
+package Vistas;
 
 import Cliente.Cliente;
 import Cliente.GestionarCliente;

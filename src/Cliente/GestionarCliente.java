@@ -101,7 +101,7 @@ public class GestionarCliente {
         ArrayList<Cliente> clientes = new ArrayList<Cliente>();
         try {
             Statement comando=connection.createStatement();
-            System.out.println("select * from Cliente where "+tipo+" like %'"+condicion+"'%");
+            //System.out.println("select * from Cliente where "+tipo+" like %'"+condicion+"'%");
             ResultSet registro = comando.executeQuery("select * from Cliente where "+tipo+" like '%"+condicion+"%'");
             
             boolean especial = false;
