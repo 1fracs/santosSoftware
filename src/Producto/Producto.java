@@ -24,6 +24,12 @@ public class Producto {
         this.precio = precio;
         this.combinacion = combinacion;
     }
+    public Producto(String nombre, String ref, double precio, int combinacion) {
+        this.nombre = nombre;
+        this.ref = ref;
+        this.precio = precio;
+        this.combinacion = combinacion;
+    }
 
     public int getIdProducto() {
         return idProducto;

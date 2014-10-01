@@ -71,5 +71,45 @@ public class GestionarProducto {
           return productos;
    }
     
+    public void modificarProducto(Producto p){
+        try {
+            Statement comando=connection.createStatement();
+           
+            comando.executeUpdate("UPDATE Productos SET "
+                    + "Nombre='"+p.getNombre()+"',"
+                    + "Ref='"+p.getRef()+"',"
+                    + "Precio='"+Double.toString(p.getPrecio())+"',"
+                    + "Combinacion='"+Integer.toString(p.getCombinacion())+"'"
+                    + " WHERE idProducto='"+p.getIdProducto()+"'");
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
+    public void insertarProducto(Producto p){
+        try {
+            Statement comando=connection.createStatement();
+            comando.executeUpdate(
+                    "INSERT INTO Productos" +
+                    "(idProducto," +
+                    "Nombre," +
+                    "Ref," +
+                    "Precio," +
+                    "Combinacion)" +
+                    "VALUES" +
+                    "(NULL,'" +
+                    p.getNombre()+"','" +
+                    p.getRef()+"','" +
+                    p.getPrecio()+"','" +
+                    p.getCombinacion()+"')");
+           
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
+}
 }
